@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Inscription</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/cabinets">Liste des patients</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/user">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/addcabinet" class="nav-link">Ajouter un patient</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<h1>Liste des patients</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <input type="text" [(ngModel)]="filters.keyword" name="key" (input)="ListCabinet()" class="form-control" placeholder="Rechercher...">
+    </div>
+   
+    
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+           
+            <th>Prénom</th>
+            <th>Âge </th>
+            <th>Num tel</th>
+            <th>Date de consultation</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cabinet of cabinets">
+                <td>{{ cabinet.id }}</td>
+                <td>{{ cabinet.name }}</td>
+                <td>{{ cabinet.firstName }}</td>
+                <td>{{ cabinet.age }}</td>
+                <td> <a href="tel:{{ cabinet.numtel }}">
+                    <i class="fas fa-phone"></i>
+                    {{ cabinet.numtel }}
+                  </a></td>
+                <td>{{ cabinet.consultationDate }}</td>
+                <td>
+                  <a routerLink="/editcabinet/{{ cabinet.id }}" class="btn btn-sm btn-warning mr-2">Modifier</a>
+                  <button class="btn btn-sm btn-danger" (click)="deleteCabinet(cabinet.id)">Supprimer</button>
+                </td>
+              </tr>
+             
+              
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

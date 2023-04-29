@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title>Inscription</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/cabinets">Liste des patients</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/user">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/addcabinet" class="nav-link">Ajouter un patient</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-4 text-center">Ajouter un patient</h5>
+            <form (ngSubmit)="saveCabinet()" id="cabinet-form">
+              <div class="form-group">
+                <label for="name">Nom :</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="cabinet.name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="first_name">Prénom :</label>
+                <input type="text" class="form-control" id="first_name" [(ngModel)]="cabinet.firstName" name="first_name" required>
+              </div>
+              <div class="form-group">
+                <label for="age">Âge :</label>
+                <input type="number" class="form-control" id="age" [(ngModel)]="cabinet.age" name="age" required>
+              </div>
+              <div class="form-group">
+                <label for="age">Num tel :</label>
+                <input type="number" class="form-control" id="numtel" [(ngModel)]="cabinet.numtel" name="numtel" required>
+              </div>
+              <div class="form-group">
+                <label for="date_consultation">Date de consultation :</label>
+                <input type="date" class="form-control" id="date_consultation" [(ngModel)]="cabinet.consultationDate" name="date_consultation" required>
+              </div><br>
+              <div class="form-group text-center">
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary mr-3 no-print">Ajouter</button>
+                    <button *ngIf="cabinet.id" class="btn btn-danger mr-3 no-print" (click)="deleteCabinet(cabinet.id)">Supprimer</button>
+                    <button *ngIf="cabinet.id" type="button" class="btn btn-secondary no-print" (click)="printForm()">Imprimer</button> 
+                    
+                    
+                  </div>
+                  
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
