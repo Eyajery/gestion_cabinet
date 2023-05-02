@@ -10,7 +10,7 @@ export class UserService {
   private getUrl: string ="http://localhost:8081/api/v1/users";
 
   constructor(private _httpclient:HttpClient) { }
-  getUsres(): Observable<User[]>{
+  getUsers(): Observable<User[]>{
     return this._httpclient.get<User[]>(this.getUrl).pipe(
       map(response=>response)
     )
@@ -26,9 +26,6 @@ export class UserService {
   deleteUser(id: number):Observable<any>{
     return this._httpclient.delete(`${this.getUrl}/${id}`,{responseType:'text'});
   }
-  checkEmailExists(email: string): Observable<boolean> {
-    const url = `${this.getUrl}/emailExists/${email}`;
-    return this._httpclient.get<boolean>(url);
-}
+
 
 }

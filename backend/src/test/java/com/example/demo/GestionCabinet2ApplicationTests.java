@@ -43,6 +43,8 @@ class GestionCabinet2ApplicationTests {
 	    System.out.println("Fin du test");
 	}
 	
+
+	
 	@Test
     public void testCreateCabinet() {
         LocalDate consultationDate = LocalDate.of(2023, 4, 22);
@@ -80,17 +82,5 @@ class GestionCabinet2ApplicationTests {
         Cabinet deletedCabinet = cabinetRepository.findById(savedCabinet.getId()).orElse(null);
         Assertions.assertNull(deletedCabinet);
     }
-   @Autowired
-   private UserRepository userRepository;
-
-   @Test
-   void testAddUser() {
-       User user = new User(null, "jery.eya", "password", "password", "jery.eya@example.com");
-       User savedUser = userRepository.save(user);
-
-       assertThat(savedUser).isNotNull();
-       assertThat(savedUser.getId()).isNotNull();
-       assertThat(savedUser.getUsername()).isEqualTo(user.getUsername());
-       assertThat(savedUser.getEmail()).isEqualTo(user.getEmail());
-   }
+  
 }

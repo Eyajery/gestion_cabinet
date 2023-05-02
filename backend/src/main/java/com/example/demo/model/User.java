@@ -21,9 +21,9 @@ public class User {
   private String username;
 
   private String password;
-  private String password2; // Nouvelle propriété
+  private String password2; 
   private String email;
-  public boolean isPasswordMatch() { // Nouvelle méthode
+  public boolean isPasswordMatch() { 
 	    return password != null && password.equals(password2);
 	  }
 public User(Long id, String username, String password, String password2, String email) {
@@ -34,5 +34,9 @@ public User(Long id, String username, String password, String password2, String 
 	this.password2 = password2;
 	this.email = email;
 }
-  // constructeurs, getters et setters omis pour la simplicité
+public User() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+  
 }
