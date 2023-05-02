@@ -37,9 +37,12 @@
 							<div class="form-group">
 								<label for="password2">Vérifier mot de passe :</label>
 								<input type="password" class="form-control" name="password2" [(ngModel)]="user.password2" required>
+								
 							</div>
-						
+							
+							
 							<button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+							<div *ngIf="passwordError" class="alert alert-danger mt-3">{{ passwordError}}</div>
 							<h6 class="space">Avez-vous un compte? <a href="/user">Se connecter maintenant</a></h6>
 						</form>
 						
